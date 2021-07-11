@@ -1,8 +1,6 @@
 defmodule STS.Account do
-  use Ecto.Schema
+  use STS.Schema
 
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
   schema "accounts" do
     field(:name, :string)
     field(:balance, :decimal, default: 0)
@@ -10,7 +8,8 @@ defmodule STS.Account do
 
   def changeset(account \\ %__MODULE__{}, params) do
     account
-    |> Ecto.Changeset.cast(params, [:name, :balance])
-    |> Ecto.Changeset.validate_required([:name])
+    |> cast(params, [:name, :balance])
+    |> validate_required([:name])
+    |> validate_number(:balance, greater_than_or_equal_to: 0)
   end
 end

@@ -1,20 +1,27 @@
 # STS
 
-**TODO: Add description**
+Symple Transaction System is a small app to manage account information and submit transactions.
 
-## Installation
+## Available functionality:
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sts` to your list of dependencies in `mix.exs`:
+- Account: 
+   * STS.list_accounts(): list all accounts
+   * STS.find_account(id): find an account
+   * STS.create_account(params): creates an account
+   * STS.update_account(account, params): updates an account (balance can't be set below 0)
+   
+- Transaction:
+   * STS.submit_transaction(sender, receiver, amount): submits an transaction.  sender has to have appropriate amount of balance to be able to submit.
+   * STS.list_transactions(filter): list transactions, filter (account_id) is optional.
 
-```elixir
-def deps do
-  [
-    {:sts, "~> 0.1.0"}
-  ]
-end
+## How to run app:
+
+```
+$ iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sts](https://hexdocs.pm/sts).
+## How to run test:
+
+```
+$ mix test
+```

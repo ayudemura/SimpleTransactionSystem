@@ -1,8 +1,6 @@
 defmodule STS.Transaction do
-  use Ecto.Schema
+  use STS.Schema
 
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
   schema "transactions" do
     belongs_to(:sender, STS.Account)
     belongs_to(:receiver, STS.Account)
